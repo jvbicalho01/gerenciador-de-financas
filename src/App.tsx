@@ -7,6 +7,8 @@ import { Header } from "./components/Header"
 import { Dashboard } from "./components/Dashboard"
 import { NewTransactionModal } from "./components/NewTransactionModal"
 
+import { TransactionsContext, TransactionsProvider } from "./TransactionsContext"
+
 Modal.setAppElement('#root');
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       <GlobalStyle />
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Dashboard />
@@ -30,7 +32,7 @@ function App() {
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleCloseNewTransactionModal}
       />
-    </>
+    </TransactionsProvider>
   )
 }
 
